@@ -8,8 +8,8 @@ RUN        apk update && apk add --upgrade bash jq && \
            rm -rf /var/cache/apk/*
 COPY       start_mongo.sh /
 RUN        chmod +x /start_mongo.sh
-ENTRYPOINT /start_mongo.sh
+ENTRYPOINT [ "/start_mongo.sh" ]
 EXPOSE     27017 28017
 VOLUME     /data/db
 WORKDIR    /data
-CMD        mongod
+CMD        [ "mongod" ]
