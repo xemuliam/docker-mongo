@@ -1,5 +1,6 @@
 FROM       alpine
 MAINTAINER Viacheslav Kalashnikov <xemuliam@gmail.com>
+ARG        MONGODB_VERSION=3.4.3-r0
 RUN        apk update && apk add --upgrade bash jq && \
            echo "@edge http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
            apk --no-cache --update add mongodb@edge=$MONGODB_VERSION && \
