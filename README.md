@@ -31,6 +31,16 @@
 
 Dockerized Mongo database.
 
+Mongo tools are uincluded also:
+- __*bsondump*__ - display BSON files in a human-readable format
+- __*mongoimport*__ - Convert data from JSON, TSV or CSV and insert them into a collection
+- __*mongoexport*__ - Write an existing collection to CSV or JSON format
+- __*mongodump/mongorestore*__ - Dump MongoDB backups to disk in .BSON format, or restore them to a live database
+- __*mongostat*__ - Monitor live MongoDB servers, replica sets, or sharded clusters
+- __*mongofiles*__ - Read, write, delete, or update files in GridFS
+- __*mongooplog*__ - Replay oplog entries between MongoDB servers
+- __*mongotop*__ - Monitor read/write activity on a mongo server
+
 # Exposed ports
 
 - 27017 - The default port for __mongod__ and __mongos__ instances
