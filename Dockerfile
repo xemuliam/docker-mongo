@@ -1,15 +1,18 @@
-FROM       alpine
+FROM       alpine:3.6
 MAINTAINER Viacheslav Kalashnikov <xemuliam@gmail.com>
-ARG        MONGODB_VERSION=3.4.3-r0
-RUN        apk update && apk add --upgrade bash jq && \
-           echo "@edge http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-           apk --no-cache --update add mongodb@edge=$MONGODB_VERSION && \
-           # rm /usr/bin/mongosniff /usr/bin/mongoperf && \
+ARG        MONGO_DB_VERSION=3.4.4-r0
+ARG        MONGO_TOOLS_VERSION=3.4.4-r2
+RUN        apk update && apk add --upgrade \
+               bash \
+               jq \
+               mongodb=$MONGO_DB_VERSION \
+               mongo-tools=$MONGO_TOOLS_VERSION && \
            rm -rf /var/cache/apk/*
-COPY       start_mongo.sh /
-RUN        chmod +x /start_mongo.sh
-ENTRYPOINT [ "/start_mongo.sh" ]
+RUN        mkdir -p /data/db /data/configdb && \
+	chown -R mongodb:mongodb /data/db /data/configdb
+VOLUME     /data/db \
+           /data/configdb
+COPY       start_mongo.sh /usr/local/bin/ && chmod +x /usr/local/bin/start_mongo.sh
+ENTRYPOINT [ "start_mongo.sh" ]
 EXPOSE     27017 28017
-VOLUME     /data/db
-WORKDIR    /data
 CMD        [ "mongod" ]
