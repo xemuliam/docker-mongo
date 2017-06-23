@@ -2,7 +2,7 @@ FROM       alpine:3.6
 MAINTAINER Viacheslav Kalashnikov <xemuliam@gmail.com>
 ARG        MONGODB_VERSION=3.4.4-r0
 ARG        MONGODB_TOOLS_VERSION=3.4.4-r2
-RUN        apk update && apk add --upgrade \
+RUN        apk add --no-cache \
                bash \
                jq \
 	       su-exec \
