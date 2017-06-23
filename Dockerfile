@@ -5,6 +5,7 @@ ARG        MONGODB_TOOLS_VERSION=3.4.4-r2
 RUN        apk update && apk add --upgrade \
                bash \
                jq \
+	       su-exec \
                mongodb=$MONGODB_VERSION \
                mongodb-tools=$MONGODB_TOOLS_VERSION && \
            rm -rf /var/cache/apk/*
