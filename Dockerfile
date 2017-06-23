@@ -1,4 +1,4 @@
-FROM       alpine:3.6
+FROM       alpine
 MAINTAINER Viacheslav Kalashnikov <xemuliam@gmail.com>
 ARG        MONGODB_VERSION=3.4.4-r0
 ARG        MONGODB_TOOLS_VERSION=3.4.4-r2
