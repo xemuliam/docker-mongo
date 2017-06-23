@@ -12,7 +12,7 @@ RUN        mkdir -p /data/db /data/configdb && \
 	   chown -R mongodb:mongodb /data/db /data/configdb
 VOLUME     /data/db \
            /data/configdb
-COPY       start_mongo.sh /usr/local/bin/ && chmod +x /usr/local/bin/start_mongo.sh
+COPY       start_mongo.sh /usr/local/bin/
 ENTRYPOINT [ "start_mongo.sh" ]
 EXPOSE     27017 28017
 CMD        [ "mongod" ]
